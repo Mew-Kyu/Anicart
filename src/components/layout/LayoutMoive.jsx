@@ -1,6 +1,8 @@
 import { Layout, Space } from "antd";
+import MovieFooter from "../footer/MovieFooter";
 import MovieHeader from "../header/MovieHeader";
-const { Header, Footer, Sider, Content } = Layout;
+import MovieSider from "../sider/MovieSider";
+const { Content } = Layout;
 
 const contentStyle = {
   textAlign: "center",
@@ -9,17 +11,7 @@ const contentStyle = {
   color: "#fff",
   backgroundColor: "#108ee9",
 };
-const siderStyle = {
-  textAlign: "center",
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#3ba0e9",
-};
-const footerStyle = {
-  textAlign: "center",
-  color: "#fff",
-  backgroundColor: "#7dbcea",
-};
+
 const LayoutMoive = () => (
   <Space
     direction="vertical"
@@ -29,14 +21,12 @@ const LayoutMoive = () => (
     size={[0, 48]}
   >
     <Layout>
-      <Header>
-        <MovieHeader />
-      </Header>
+      <MovieHeader />
       <Layout>
         <Content style={contentStyle}>Content</Content>
-        <Sider style={siderStyle}>Sider</Sider>
+        <MovieSider />
       </Layout>
-      <Footer style={footerStyle}>Footer</Footer>
+      <MovieFooter />
     </Layout>
   </Space>
 );

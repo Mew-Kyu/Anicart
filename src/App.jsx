@@ -1,16 +1,22 @@
 import "./App.css";
 import LayoutMoive from "./components/layout/LayoutMoive";
-import BASE_URL from "./utils/api";
+import SEARCH_URL from "./utils/search";
+import TRENDING_URL from "./utils/trending";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
-  const find = "doremon";
+  // const find = "doremon";
 
-  fetch(`${BASE_URL}&language=vi-VN&query=${find}&page=1&include_adult=false`)
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+  // fetch(`${TRENDING_URL}`)
+  //   .then((response) => response.json())
+  //   .then((response) => console.log(response))
+  //   .catch((err) => console.error(err));
+
   return (
     <>
+      <Routes>
+        <Route></Route>
+      </Routes>
       <LayoutMoive />
     </>
   );
