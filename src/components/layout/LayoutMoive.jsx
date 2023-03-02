@@ -1,16 +1,9 @@
 import { Layout, Space } from "antd";
 import MovieFooter from "../footer/MovieFooter";
 import MovieHeader from "../header/MovieHeader";
+import MovieHome from "../pages/home/MovieHome";
 import MovieSider from "../sider/MovieSider";
 const { Content } = Layout;
-
-const contentStyle = {
-  textAlign: "center",
-  minHeight: 120,
-  lineHeight: "120px",
-  color: "#fff",
-  backgroundColor: "#108ee9",
-};
 
 const LayoutMoive = () => (
   <Space
@@ -23,7 +16,9 @@ const LayoutMoive = () => (
     <Layout>
       <MovieHeader />
       <Layout>
-        <Content style={contentStyle}>Content</Content>
+        <Content>
+          <MovieHome />
+        </Content>
         <MovieSider />
       </Layout>
       <MovieFooter />

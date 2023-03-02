@@ -12,7 +12,6 @@ const MovieSider = () => {
     fetch(`${TRENDING_URL}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
         setTrend(data.results);
       });
   }, []);
@@ -21,36 +20,41 @@ const MovieSider = () => {
     <Sider
       style={{
         overflow: "auto",
-        height: "100vh",
+        height: "60vh",
         position: "fixed",
         right: 0,
-        top: 0,
-        bottom: 0,
+        margin: 20,
+        borderRadius: 15,
       }}
     >
       <h2 style={{ color: "white", textAlign: "center" }}>Trending</h2>
-      {trend.map((trend, index) => (
-        <Row
-          key={index}
-          style={{
-            height: 80,
-            margin: 16,
-            background: "rgba(255, 255, 255, 0.2)",
-          }}
-        >
-          <Col span={9}>
-            <img
-              src={`https://image.tmdb.org/t/p/w200/${trend.poster_path}`}
-              alt="icon"
-              style={{ height: 80 }}
-            />
-          </Col>
-          <Col span={15} style={{ color: "white", fontSize: 12 }}>
-            <p>{trend.original_title}</p>
-            <p>{trend.release_date}</p>
-          </Col>
-        </Row>
-      ))}
+      {trend.map(
+        (trend, index) =>
+          index < 5 && (
+            <Row
+              key={index}
+              style={{
+                height: 82,
+                margin: 14,
+                background: "rgba(255, 255, 255, 0.2)",
+              }}
+            >
+              <Col span={9}>
+                <img
+                  src={`https://image.tmdb.org/t/p/w200/${trend.poster_path}`}
+                  alt={trend.original_title || trend.name}
+                  style={{ height: 82 }}
+                />
+              </Col>
+              <Col span={15} style={{ color: "white", fontSize: 12 }}>
+                <p style={{ fontWeight: "bold" }}>
+                  {trend.original_title || trend.name}
+                </p>
+                <p>{trend.release_date || trend.first_air_date}</p>
+              </Col>
+            </Row>
+          )
+      )}
     </Sider>
   );
 };
