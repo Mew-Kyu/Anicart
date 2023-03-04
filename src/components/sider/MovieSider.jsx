@@ -20,17 +20,17 @@ const MovieSider = () => {
     <Sider
       style={{
         overflow: "auto",
-        height: "60vh",
+        height: "80vh",
         position: "fixed",
         right: 0,
-        margin: 20,
+        margin: 5,
         borderRadius: 15,
       }}
     >
       <h2 style={{ color: "white", textAlign: "center" }}>Trending</h2>
       {trend.map(
         (trend, index) =>
-          index < 5 && (
+          index < 4 && (
             <Row
               key={index}
               style={{

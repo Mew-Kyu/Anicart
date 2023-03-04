@@ -1,21 +1,13 @@
 import "./App.css";
 import LayoutMoive from "./components/layout/LayoutMoive";
-import SEARCH_URL from "./utils/search";
-import TRENDING_URL from "./utils/trending";
 import { Routes, Route } from "react-router-dom";
+import MovieHome from "./components/pages/home/MovieHome";
 
 function App() {
-  // const find = "doremon";
-
-  // fetch(`${TRENDING_URL}`)
-  //   .then((response) => response.json())
-  //   .then((response) => console.log(response))
-  //   .catch((err) => console.error(err));
-
   return (
     <>
       <Routes>
-        <Route></Route>
+        <Route path="/" element={<MovieHome />} />
       </Routes>
       <LayoutMoive />
     </>

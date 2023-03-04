@@ -2,6 +2,7 @@ import React from "react";
 import { Layout, Row, Col, Card } from "antd";
 import POLULAR_URL from "../../../utils/popular";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const { Content } = Layout;
 
@@ -28,21 +29,23 @@ const MovieHome = () => {
         <div className="site-card-wrapper">
           <Row gutter={[16, 16]}>
             {popular.map((popular, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={3}>
-                <Card
-                  hoverable
-                  cover={
-                    <img
-                      alt={popular.title}
-                      src={`https://image.tmdb.org/t/p/w200/${popular.poster_path}`}
+              <Col key={index} xs={24} sm={12} md={8} lg={4}>
+                <Link to={`/detail/${popular.id}`}>
+                  <Card
+                    hoverable
+                    cover={
+                      <img
+                        alt={popular.title}
+                        src={`https://image.tmdb.org/t/p/w200/${popular.poster_path}`}
+                      />
+                    }
+                  >
+                    <Card.Meta
+                      title={popular.title}
+                      description={popular.release_date}
                     />
-                  }
-                >
-                  <Card.Meta
-                    title={popular.title}
-                    description={popular.release_date}
-                  />
-                </Card>
+                  </Card>
+                </Link>
               </Col>
             ))}
           </Row>
