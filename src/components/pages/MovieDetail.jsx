@@ -2,21 +2,23 @@ import React, { useState, useEffect } from "react";
 import DETAIL_URL from "../../utils/detail";
 import api_key from "../../utils/key";
 import { Row, Col, Card, Typography } from "antd";
+import { useParams } from "react-router-dom";
 const { Title, Text } = Typography;
 
 const MovieDetail = () => {
   const [detail, setDetail] = useState();
   const [companies, setCompanies] = useState([]);
+  const { id } = useParams();
 
   useEffect(() => {
-    fetch(`${DETAIL_URL}631842?api_key=${api_key}&language=en-US`)
+    fetch(`${DETAIL_URL}${id}?api_key=${api_key}&language=en-US`)
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
         setDetail(data);
         setCompanies(data.production_companies);
       });
-  }, []);
+  }, [id]);
   return (
     <div>
       <Row gutter={[16, 16]}>
