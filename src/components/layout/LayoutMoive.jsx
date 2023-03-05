@@ -21,7 +21,7 @@ const LayoutMoive = () => {
         <Layout>
           <Content>
             <Routes>
-              <Route path="/" element={<MovieHome />} />
+              <Route path="*" element={<MovieHome />} />
               <Route path="/detail/:id" element={<MovieDetail />} />
             </Routes>
           </Content>
