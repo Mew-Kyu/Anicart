@@ -15,13 +15,16 @@ const MovieDetail = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+        if (data.success === false) {
+          alert("error");
+        }
         setDetail(data);
         setCompanies(data.production_companies);
       });
   }, [id]);
   return (
     <div>
-      <Row gutter={[16, 16]}>
+      <Row gutter={[16, 16]} style={{ margin: 10, padding: 10 }}>
         <Col xs={24} md={8}>
           <Card
             hoverable
@@ -52,10 +55,10 @@ const MovieDetail = () => {
           <ul>
             {companies.map((companies, index) => (
               <li key={index}>
-                <p>{companies.name}</p>
+                <p>{companies?.name}</p>
                 <img
-                  src={`https://image.tmdb.org/t/p/w200/${companies.logo_path}`}
-                  alt={companies.name}
+                  src={`https://image.tmdb.org/t/p/w200/${companies?.logo_path}`}
+                  alt={companies?.name}
                 />
               </li>
             ))}
