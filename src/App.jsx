@@ -1,10 +1,10 @@
 import "./App.css";
-import LayoutMoive from "./components/layout/LayoutMoive";
+import LayoutMovie from "./components/layout/LayoutMovie";
 
 function App() {
   return (
     <>
-      <LayoutMoive />
+      <LayoutMovie />
     </>
   );
 }

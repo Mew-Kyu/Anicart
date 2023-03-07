@@ -9,7 +9,7 @@ import MovieSearch from "../pages/search/MovieSearch";
 import MovieSider from "../sider/MovieSider";
 const { Content } = Layout;
 
-const LayoutMoive = () => {
+const LayoutMovie = () => {
   return (
     <Space
       direction="vertical"
@@ -23,10 +23,10 @@ const LayoutMoive = () => {
         <Layout>
           <Content>
             <Routes>
-              <Route path="*" element={<MovieHome />} />
+              <Route path="/" element={<MovieHome />} />
               <Route path="/search" element={<MovieSearch />} />
-              <Route path="/login" element={<MovieLogin />} />
               <Route path="/detail/:id" element={<MovieDetail />} />
+              <Route path="/login" element={<MovieLogin />} />
             </Routes>
           </Content>
           <MovieSider />
@@ -36,4 +36,4 @@ const LayoutMoive = () => {
     </Space>
   );
 };
-export default LayoutMoive;
+export default LayoutMovie;
