@@ -16,9 +16,7 @@ const MovieHeader = () => {
           defaultSelectedKeys={["1"]}
           items={[
             { key: "1", label: <Link to="/">Home</Link> },
-            { key: "2", label: <Link to="/movie">Movie</Link> },
-            { key: "3", label: <Link to="/tv">TV Show</Link> },
-            { key: "4", label: <Link to="/actor">Actor</Link> },
+            { key: "2", label: <Link to="/search">Search</Link> },
           ]}
         />
       </div>

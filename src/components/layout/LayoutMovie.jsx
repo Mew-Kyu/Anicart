@@ -1,15 +1,20 @@
 import { Layout, Space } from "antd";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import MovieFooter from "../footer/MovieFooter";
 import MovieHeader from "../header/MovieHeader";
-import MovieHome from "../pages/home/MovieHome";
-import MovieLogin from "../pages/login/MovieLogin";
-import MovieDetail from "../pages/MovieDetail";
-import MovieSearch from "../pages/search/MovieSearch";
 import MovieSider from "../sider/MovieSider";
+import { publicRoute, privateRoutes } from "../../routes/index";
+import { useEffect } from "react";
 const { Content } = Layout;
 
 const LayoutMovie = () => {
+  const token = localStorage.getItem("Token");
+  const navigator = useNavigate();
+  useEffect(() => {
+    if (!token) {
+      navigator("/login");
+    }
+  }, [token]);
   return (
     <Space
       direction="vertical"
@@ -23,10 +28,29 @@ const LayoutMovie = () => {
         <Layout>
           <Content>
             <Routes>
-              <Route path="/" element={<MovieHome />} />
-              <Route path="/search" element={<MovieSearch />} />
-              <Route path="/detail/:id" element={<MovieDetail />} />
-              <Route path="/login" element={<MovieLogin />} />
+              {token ? (
+                <>
+                  {privateRoutes.map((route) => (
+                    <Route
+                      key={route.path}
+                      path={route.path}
+                      element={route.element}
+                    />
+                  ))}
+                </>
+              ) : (
+                <>
+                  (
+                  {publicRoute.map((route) => (
+                    <Route
+                      key={route.path}
+                      path={route.path}
+                      element={route.element}
+                    />
+                  ))}
+                  )
+                </>
+              )}
             </Routes>
           </Content>
           <MovieSider />
