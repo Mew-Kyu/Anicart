@@ -1,8 +1,6 @@
 import { Layout, Space } from "antd";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import MovieFooter from "../footer/MovieFooter";
-import MovieHeader from "../header/MovieHeader";
-import MovieSider from "../sider/MovieSider";
 import { publicRoute, privateRoutes } from "../../routes/index";
 import { useEffect } from "react";
 const { Content } = Layout;
@@ -14,7 +12,7 @@ const LayoutMovie = () => {
     if (!token) {
       navigator("/login");
     }
-  }, [token]);
+  }, [token, navigator]);
   return (
     <Space
       direction="vertical"
@@ -24,7 +22,6 @@ const LayoutMovie = () => {
       size={[0, 48]}
     >
       <Layout>
-        <MovieHeader />
         <Layout>
           <Content>
             <Routes>
@@ -53,7 +50,6 @@ const LayoutMovie = () => {
               )}
             </Routes>
           </Content>
-          <MovieSider />
         </Layout>
         <MovieFooter />
       </Layout>

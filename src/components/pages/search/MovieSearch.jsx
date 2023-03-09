@@ -3,6 +3,7 @@ import SEARCH_URL from "../../../utils/search";
 import { Link } from "react-router-dom";
 import { Input, Space } from "antd";
 import { Layout, Row, Col, Card } from "antd";
+import MovieHeader from "../../header/MovieHeader";
 
 const { Content } = Layout;
 const { Search } = Input;
@@ -14,13 +15,14 @@ const MovieSearch = () => {
     fetch(`${SEARCH_URL}&query=${value}`)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setSearch(data.results);
       });
   };
 
   return (
     <>
+      <MovieHeader />
       <Space
         direction="horizontal"
         style={{
